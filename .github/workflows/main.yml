@@ -9,9 +9,6 @@ jobs:
   run-cron:
     runs-on: ubuntu-latest
     steps:
-      - name: Llamar al endpoint de sincronización (modo diagnóstico)
+      - name: Llamar al endpoint de sincronización
         run: |
-          curl -v \
-            -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" \
-            -H "Accept: application/json" \
-            "https://cartadex.margarciab01.workers.dev/admin/run-cron?key=${{ secrets.ADMIN_KEY }}" || true
+          curl -fsS "https://cartadex.margarciab01.workers.dev/admin/run-cron?key=${{ secrets.ADMIN_KEY }}"
